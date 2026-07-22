@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Aceita? 💕</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #ffc8dd;
+    font-family: 'Montserrat', sans-serif;
+    height: 100dvh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+  .banner {
+    width: 100%;
+    background: #ffc8dd;
+    padding: 18px 0 8px;
+    text-align: center;
+    border-bottom: 3px solid #ff69b4;
+  }
+  .question {
+    color: #a90d22;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 30px;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .btn {
+    padding: 16px 48px;
+    border: 3px solid #a90d22;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  #btn-sim {
+    background: #ffb3c1;
+    color: #a90d22;
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #btn-nao {
+    background: #ff8fab;
+    color: #fff;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: none;
+  }
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #ffc8dd;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  .overlay.show { display: flex; }
+  .overlay p {
+    color: #a90d22;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="banner"></div>
+<p class="question">Quer sair comigo sexta? 🥰</p>
+
+<button id="btn-nao" class="btn"
+  ontouchstart="moveBtn(event)" onmouseenter="moveBtn(event)">Não 😢</button>
+
+<button id="btn-sim" class="btn" onclick="accepted()">Sim 💖</button>
+
+<div class="overlay" id="overlay">
+  <p>Obrigado linda, sabia que iria aceitar 💕<br><br>Beijos do Teteuzinho 😘<br>Até sexta bb 🥰</p>
+</div>
+
+<script>
+  const btnNao = document.getElementById('btn-nao');
+
+  function moveBtn(e) {
+    if (e) e.preventDefault();
+    const maxX = window.innerWidth - btnNao.offsetWidth - 10;
+    const maxY = window.innerHeight - btnNao.offsetHeight - 10;
+    const x = Math.floor(Math.random() * maxX);
+    const y = Math.floor(Math.random() * maxY);
+    btnNao.style.left = x + 'px';
+    btnNao.style.top = y + 'px';
+    btnNao.style.transform = 'none';
+  }
+
+  function accepted() {
+    document.getElementById('overlay').classList.add('show');
+  }
+</script>
+</body>
+</html>
